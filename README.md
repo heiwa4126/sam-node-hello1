@@ -1,15 +1,51 @@
+# sam-node-hello1
+
+Node.jsでAWS Lambdaの練習。
+API GatewayでGETでクエリありとなし。
+
+
+## 手順
+
+```bash
+sam init --name hello1 --runtime nodejs16.x --package-type Zip --app-template hello-world --no-tracing
+cd hello1
+rm -rf event
+cd hello-world
+#$ app.js 編集
+#$ tests/unit/test-handler.js 編集
+npm i
+npm test
+cd ..
+#$ template.yaml 編集
+#$ cfn-lint template.yaml でチェック
+sam build
+sam local invoke HelloWorldFunction  # "hello world"
+sam local invoke HelloWorldFunction -e events/event.json   # "hello Bob"
+sam local start-api &
+curl http://127.0.0.1:3000/hello  # "hello world"
+curl http://127.0.0.1:3000/hello?name=Charlie   # "hello Charlie"
+kill %1
+sam deploy -g
+#$ テスト
+sam delete --no-prompts
+```
+
+
+<hr>
+(以下sam initで生成されたそのまま)
+
 # hello1
 
 This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI. It includes the following files and folders.
 
 - hello-world - Code for the application's Lambda function.
 - events - Invocation events that you can use to invoke the function.
-- hello-world/tests - Unit tests for the application code. 
+- hello-world/tests - Unit tests for the application code.
 - template.yaml - A template that defines the application's AWS resources.
 
 The application uses several AWS resources, including Lambda functions and an API Gateway API. These resources are defined in the `template.yaml` file in this project. You can update the template to add AWS resources through the same deployment process that updates your application code.
 
-If you prefer to use an integrated development environment (IDE) to build and test your application, you can use the AWS Toolkit.  
+If you prefer to use an integrated development environment (IDE) to build and test your application, you can use the AWS Toolkit.
 The AWS Toolkit is an open source plug-in for popular IDEs that uses the SAM CLI to build and deploy serverless applications on AWS. The AWS Toolkit also adds a simplified step-through debugging experience for Lambda function code. See the following links to get started.
 
 * [CLion](https://docs.aws.amazon.com/toolkit-for-jetbrains/latest/userguide/welcome.html)
