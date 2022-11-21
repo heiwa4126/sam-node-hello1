@@ -31,6 +31,20 @@ sam delete --no-prompts
 ```
 
 
+## バージョン
+
+```
+$ sam --version
+SAM CLI, version 1.63.0
+
+$ node -v
+v18.12.1
+
+$ npm -v
+9.1.2
+```
+
+
 <hr>
 (以下sam initで生成されたそのまま)
 
