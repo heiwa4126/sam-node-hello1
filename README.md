@@ -9,7 +9,6 @@ API GatewayでGETでクエリありとなし。
 ```bash
 sam init --name hello1 --runtime nodejs16.x --package-type Zip --app-template hello-world --no-tracing
 cd hello1
-rm -rf event
 cd hello-world
 #$ app.js 編集
 #$ tests/unit/test-handler.js 編集
@@ -19,6 +18,7 @@ cd ..
 #$ template.yaml 編集
 #$ cfn-lint template.yaml でチェック
 sam build
+#$ events/event.json 編集
 sam local invoke HelloWorldFunction  # "hello world"
 sam local invoke HelloWorldFunction -e events/event.json   # "hello Bob"
 sam local start-api &
