@@ -44,11 +44,18 @@ $ npm -v
 9.1.2
 ```
 
-## TODO
-
-esbuildやってみる。
+## esbuildやってみた
 
 [esbuild による Node.js Lambda関数の構築 - AWS Serverless Application Model](https://docs.aws.amazon.com/ja_jp/serverless-application-model/latest/developerguide/serverless-sam-cli-using-build-typescript.html)
+
+いまのところnpmが9だと `sam build` で死ぬ。8に落とす。
+
+```bash
+npm install -g npm@8.19.3
+```
+
+あと本当は hello-world で `npm i --save-dev esbundle` するべきなんだろうけど
+手抜きで `npm i -g esbundle` しました。
 
 
 <hr>
