@@ -44,6 +44,12 @@ $ npm -v
 9.1.2
 ```
 
+## TODO
+
+esbuildやってみる。
+
+[esbuild による Node.js Lambda関数の構築 - AWS Serverless Application Model](https://docs.aws.amazon.com/ja_jp/serverless-application-model/latest/developerguide/serverless-sam-cli-using-build-typescript.html)
+
 
 <hr>
 (以下sam initで生成されたそのまま)
